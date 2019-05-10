@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World!</title>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Sanchez" rel="stylesheet">
+</head>
+
+<header>
+    <div class="greetings">
+        <h1>Welcome! <br>This is Yeyoung's first blog!</h1>
+    </div>
+</header>
+
+<body>
+    <div class="navbar">
+        <a class="nav-item nav-link" href="{% url 'home' %}" style="text-decoration:none;">Back to Home</a>
+        <br>
+        <a class="nav-item nav-link" href="{% url 'new' %}" style="text-decoration:none;">Create New One</a>
+    </div>
+            
+     {% for babo in babos.all %}
+    <div class="container">
+        <h2 id=hook>{{ babo.title }}</h2>
+        <p id="timeline">{{ babo.pub_date }}</p>
+        <p id="preview">{{ babo.summary }}<a href="{% url 'detail' babo.id %}">...MORE</a></p>
+        <p><a href="{% url 'delete' babo.id %}" style="text-decoration:none;">-DELETE-</a></p>
+    </div>
+     {% endfor %}             
+</body>
+
+<style>
+    *{
+        background-color: #F1D4AF;
+    }
+    .greetings {
+        text-align: center;
+        font-family: 'Permanent Marker', cursive;
+        color: #774F38;
+        font-size: 32px;
+    }
+
+    body {
+        font-family: 'Sanchez', serif;
+        margin: 5% 20%;
+    }
+
+    .navbar {
+        text-align: right;
+        text-decoration: none;
+    }
+
+    #hook {
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 28px;
+    }
+
+    #timeline {
+        text-align: center;
+        margin-top: 0;
+        font-size: 16px;
+    }
+
+    #preview {
+        text-align: left;
+        font-size: 20px;
+    }
+</style>
+
+</html>
